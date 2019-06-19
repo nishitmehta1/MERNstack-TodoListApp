@@ -74,9 +74,9 @@ app.use('/todos', todoRoutes);
 // For production = Build
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('./frontend/build/static'));
+  app.use(express.static('./client/build/static'));
   app.get('*', (res, req) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 app.listen(PORT, () => {

@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 const todoRoutes = express.Router();
 const PORT = 4000;
 
@@ -70,6 +71,14 @@ todoRoutes.route('/update/:id').post((req, res) => {
 
 app.use('/todos', todoRoutes);
 
+// For production = Build
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('./frontend/build/static'));
+  app.get('*', (res, req) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
 app.listen(PORT, () => {
   console.log(`Started @ ${PORT}`);
 });

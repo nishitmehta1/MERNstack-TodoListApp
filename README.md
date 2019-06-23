@@ -1,7 +1,7 @@
 ## Demo Video:
 
 ## Try now:
-Link: (Soon)
+Link: https://dry-earth-24571.herokuapp.com/
 
 ## Frameworks and Technologies Used:
 * MongoDb
